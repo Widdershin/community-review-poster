@@ -8,6 +8,7 @@ class Review(namedtuple('Review', ['name', 'id', 'score'])):
 
 
 class Reviews(object):
+    """Python API for reviews.rlongboarding.com"""
     def __init__(self, endpoint='http://reviews.rlongboarding.com/reviews'):
         self.endpoint = endpoint
 
