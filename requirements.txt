@@ -1,0 +1,7 @@
+-e git+git@github.com:widdershin/community-review-poster.git@be2d7ff532a7850f58090398a5f79aa9578fea6e#egg=autoposter-master
+praw==2.1.17
+py==1.4.22
+pytest==2.6.0
+requests==2.3.0
+six==1.7.3
+update-checker==0.10
