@@ -39,10 +39,14 @@ class TestRLongboarding(object):
 
         r_longboarding.reddit.submit.assert_called_with(
             'longboarding',
-            fake_review_title
+            fake_review_title,
+            text=r_longboarding.review_text(fake_review_title)
         )
 
     def test_credentials(self, r_longboarding):
         set_test_credentials()
 
         assert r_longboarding.credentials == TEST_CREDENTIALS
+
+    def test_review_text(self, r_longboarding):
+        assert r_longboarding.review_text('Potato') == 'This is a test post. Potato'
