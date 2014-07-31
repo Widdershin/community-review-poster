@@ -1,3 +1,4 @@
+import os
 import praw
 
 
@@ -12,3 +13,10 @@ class RLongboarding(object):
 
     def post_review(self, title):
         self.reddit.submit(self.subreddit, title)
+
+    @property
+    def credentials(self):
+        return {
+            "username": os.environ['REDDIT_USERNAME'],
+            "password": os.environ['REDDIT_PASSWORD'],
+        }

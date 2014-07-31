@@ -1,7 +1,7 @@
 import autoposter
 
 import pytest
-
+import os
 from unittest.mock import MagicMock
 
 
@@ -23,3 +23,12 @@ class TestRLongboarding(object):
             'longboarding',
             fake_review_title
         )
+
+    def test_credentials(self, r_longboarding):
+        os.environ['REDDIT_USERNAME'] = 'test'
+        os.environ['REDDIT_PASSWORD'] = 'swordfish'
+
+        assert r_longboarding.credentials == {
+            "username": 'test',
+            "password": 'swordfish'
+        }
