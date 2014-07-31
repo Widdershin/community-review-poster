@@ -13,12 +13,9 @@ Reviews - deals with reviews.rlongboarding.com
 	mark_review_complete(id)
 
 
-RedditPoster - posts on /r/longboarding
-	post_review(review)
-
-
 RLongboarding - deals with /r/longboarding stuff
 	update_sidebar_review(review)
+	post_review(review)
 
 
 App - orchestrates other pieces
