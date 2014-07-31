@@ -2,7 +2,17 @@ import autoposter
 
 import pytest
 import os
-from unittest.mock import MagicMock
+from unittest.mock import Mock, MagicMock
+
+TEST_CREDENTIALS = {
+    "username": 'test',
+    "password": 'swordfish'
+}
+
+
+def set_test_credentials():
+    os.environ['REDDIT_USERNAME'] = TEST_CREDENTIALS['username']
+    os.environ['REDDIT_PASSWORD'] = TEST_CREDENTIALS['password']
 
 
 @pytest.fixture
@@ -13,6 +23,14 @@ def r_longboarding():
 
 
 class TestRLongboarding(object):
+
+    def test_login(self, r_longboarding):
+        set_test_credentials()
+        r_longboarding.login()
+
+        r_longboarding.reddit.login.assert_called_with(
+            **r_longboarding.credentials
+        )
 
     def test_posting_reviews(self, r_longboarding):
         fake_review_title = 'Test Review'
@@ -25,10 +43,6 @@ class TestRLongboarding(object):
         )
 
     def test_credentials(self, r_longboarding):
-        os.environ['REDDIT_USERNAME'] = 'test'
-        os.environ['REDDIT_PASSWORD'] = 'swordfish'
+        set_test_credentials()
 
-        assert r_longboarding.credentials == {
-            "username": 'test',
-            "password": 'swordfish'
-        }
+        assert r_longboarding.credentials == TEST_CREDENTIALS

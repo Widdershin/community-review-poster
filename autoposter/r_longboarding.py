@@ -11,6 +11,9 @@ class RLongboarding(object):
         )
         self.subreddit = subreddit
 
+    def login(self):
+        self.reddit.login(**self.credentials)
+
     def post_review(self, title):
         self.reddit.submit(self.subreddit, title)
 
