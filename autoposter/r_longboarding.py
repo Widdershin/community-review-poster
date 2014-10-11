@@ -15,10 +15,14 @@ class RLongboarding(object):
         self.reddit.login(**self.credentials)
 
     def post_review(self, title, text):
-        self.reddit.submit(
+        submission = self.reddit.submit(
             self.subreddit,
             title,
             text=text)
+
+        submission.distinguish()
+
+        return submission
 
     @property
     def credentials(self):

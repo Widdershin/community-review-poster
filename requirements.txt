@@ -1,4 +1,5 @@
-praw==2.1.17
+-e .
+praw>=2.1.17
 py==1.4.22
 pytest==2.6.0
 requests==2.3.0
