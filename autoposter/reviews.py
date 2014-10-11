@@ -32,7 +32,7 @@ class Reviews(object):
 
     def _top_review_from_json(self, json):
         reviews = [Review(**review_json) for review_json in json['reviews']]
-        unsubmitted_reviews = [review for review in reviews if review.submitted != "true"]
+        unsubmitted_reviews = [review for review in reviews if not review.submitted]
         return self._top_review(unsubmitted_reviews)
 
     def _top_review(self, reviews):
