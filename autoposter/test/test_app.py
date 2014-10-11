@@ -1,6 +1,6 @@
 import autoposter
 
-from unittest.mock import Mock
+from mock import Mock
 import pytest
 
 

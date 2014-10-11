@@ -14,11 +14,11 @@ class RLongboarding(object):
     def login(self):
         self.reddit.login(**self.credentials)
 
-    def post_review(self, title):
+    def post_review(self, title, text):
         self.reddit.submit(
             self.subreddit,
             title,
-            text=self.review_text(title))
+            text=text)
 
     @property
     def credentials(self):
@@ -26,6 +26,3 @@ class RLongboarding(object):
             "username": os.environ['REDDIT_USERNAME'],
             "password": os.environ['REDDIT_PASSWORD'],
         }
-
-    def review_text(self, title):
-        return 'This is a test post. {}'.format(title)

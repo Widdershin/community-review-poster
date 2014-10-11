@@ -2,7 +2,7 @@ import autoposter
 
 import pytest
 import os
-from unittest.mock import MagicMock
+from mock import MagicMock
 
 TEST_CREDENTIALS = {
     "username": 'test',
