@@ -1,3 +1,5 @@
+import datetime
+
 from autoposter.reviews import Reviews
 from autoposter.r_longboarding import RLongboarding
 
@@ -25,5 +27,11 @@ class App(object):
             return review_file.read().format(review=review)
 
 if __name__ == '__main__':
-    App().post_top_review()
+    #sweet hack to get around daily scheduling on pythonanywhere
+
+    def today_is_wednesday():
+        datetime.datetime.today().weekday() == 2
+
+    if today_is_wednesday():
+        App().post_top_review()
 
